@@ -479,20 +479,20 @@
       display: inline-flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 8px;
     }
 
     .ctrl-btn {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      justify-content: center;
       background: rgba(236, 107, 150, 0.12);
       border: 1px solid rgba(216, 59, 108, 0.26);
       color: var(--text-wine);
       font-family: var(--font-body);
-      font-size: 0.79rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      padding: 6px 11px;
+      padding: 6px 13px;
       border-radius: 999px;
       cursor: pointer;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -588,7 +588,7 @@
       transform: translateY(0);
     }
 
-    /* KHUNG POLAROID HIỂN THỊ ẢNH KỶ NIỆM HOẶC GIF DỄ THƯƠNG */
+    /* KHUNG POLAROID HIỂN THỊ ẢNH TRONG STYLE/ HOẶC GIF DỄ THƯƠNG */
     .gif-stage-box {
       align-self: center;
       width: 100%;
@@ -628,7 +628,7 @@
     .gif-inner-frame {
       width: 100%;
       min-height: 140px;
-      max-height: 230px;
+      max-height: 235px;
       border-radius: 12px;
       overflow: hidden;
       display: flex;
@@ -640,7 +640,7 @@
     .active-story-gif {
       width: 100%;
       height: auto;
-      max-height: 230px;
+      max-height: 235px;
       object-fit: cover;
       display: block;
     }
@@ -674,7 +674,7 @@
       display: flex;
     }
 
-    /* ALBUM ẢNH KỶ NIỆM NHỎ CUỐI THƯ */
+    /* ALBUM ẢNH KỶ NIỆM NHỎ CUỐI THƯ (LẤY TỪ THƯ MỤC STYLE/) */
     .memory-gallery-wrap {
       display: none;
       flex-direction: column;
@@ -1093,7 +1093,7 @@
 
       .letter-controls {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: space-between;
       }
 
       .gif-stage-box {
@@ -1122,9 +1122,6 @@
 
   <!-- NHẠC NỀN PHÁT KHI NHẤN TRÁI TIM (Đặt file nhạc tại style/nhac.mp3) -->
   <audio id="bgMusic" src="style/nhac.mp3" loop preload="auto"></audio>
-
-  <!-- INPUT CHỌN ẢNH KỶ NIỆM BỔ SUNG (NẾU MUỐN ĐỔI ẢNH TRỰC TIẾP TRÊN TRÌNH DUYỆT) -->
-  <input type="file" id="customPhotoInput" accept="image/*" multiple hidden />
 
   <!-- LỚP CÁNH HOA TÌNH YÊU & TRÁI TIM RƠI NHẸ TOÀN MÀN HÌNH -->
   <div class="falling-layer" id="fallingLayer" aria-hidden="true"></div>
@@ -1281,19 +1278,14 @@
           </h2>
 
           <div class="letter-controls">
-            <button type="button" class="ctrl-btn" id="pickPhotoBtn" title="Chọn ảnh kỷ niệm của Minh & Thư để hiển thị">
-              <span>📸 Ảnh kỷ niệm</span>
-            </button>
             <button type="button" class="ctrl-btn" id="musicToggleBtn" aria-label="Bật hoặc tắt nhạc nền">
-              <span id="musicToggleIcon">🎵</span>
               <span id="musicToggleText">Nhạc</span>
             </button>
             <button type="button" class="ctrl-btn" id="pauseResumeBtn" aria-label="Tạm dừng hoặc tiếp tục hoạt ảnh">
-              <span id="pauseResumeIcon">⏸</span>
               <span id="pauseResumeText">Tạm dừng</span>
             </button>
             <button type="button" class="ctrl-btn" id="skipSentenceBtn" aria-label="Chuyển sang câu tiếp theo">
-              <span>Câu tiếp ⏭</span>
+              <span>Câu tiếp theo</span>
             </button>
           </div>
         </header>
@@ -1308,7 +1300,7 @@
               — Chúc bé iu của Minh có một ngày 20/10 thật trọn vẹn, luôn cảm thấy được yêu thương và an tâm khi ở bên Minh nhaaa. Thương Thư nhiều lắm! ❤️
             </p>
 
-            <!-- Khung Polaroid hiển thị ảnh kỷ niệm trong style/ hoặc ảnh GIF tương ứng -->
+            <!-- Khung Polaroid hiển thị ảnh kỷ niệm trong style/ (.jpeg) hoặc ảnh GIF tương ứng -->
             <div class="gif-stage-box" id="gifStageBox">
               <div class="gif-inner-frame">
                 <img
@@ -1326,10 +1318,10 @@
             </div>
           </div>
 
-          <!-- Album ảnh kỷ niệm của Minh & Thư (tự động hiện khi có ảnh trong style/ hoặc ảnh vừa tải lên) -->
+          <!-- Album ảnh kỷ niệm của Minh & Thư (tự động hiện các ảnh .jpeg trong thư mục style/) -->
           <div class="memory-gallery-wrap" id="memoryGalleryWrap">
             <div class="memory-gallery-title">
-              <span>📸 Khoảnh khắc kỷ niệm của Minh & Thư</span>
+              <span>Khoảnh khắc kỷ niệm của Minh & Thư</span>
               <span style="font-weight: 500; font-size: 0.76rem;">Chạm vào ảnh để xem rõ hơn nha</span>
             </div>
             <div class="memory-gallery-grid" id="memoryGalleryGrid"></div>
@@ -1337,7 +1329,7 @@
 
           <!-- Nút và danh sách xem lại toàn bộ 6 câu lời chúc sau khi câu cuối xuất hiện -->
           <button type="button" class="toggle-review-btn" id="toggleReviewBtn">
-            <span>💌 Xem lại toàn bộ lời chúc của Minh từ đầu</span>
+            <span>Xem lại toàn bộ lời chúc của Minh từ đầu</span>
           </button>
           <div class="full-letter-review" id="fullLetterReview"></div>
         </div>
@@ -1421,7 +1413,7 @@
   </main>
 
   <!-- ========================================================================
-       JAVASCRIPT ĐÃ TỐI ƯU HÓA 60FPS & TỰ ĐỘNG NHẬN ẢNH TRONG STYLE / ẢNH TẢI LÊN
+       JAVASCRIPT TỐI ƯU 60FPS & TỰ ĐỘNG LẤY ẢNH .JPEG TRONG THƯ MỤC STYLE/
        ======================================================================== -->
   <script>
     (function () {
@@ -1445,43 +1437,43 @@
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       /* ----------------------------------------------------------------------
-         2. DANH SÁCH ẢNH TRONG THƯ MỤC style/ HOẶC ẢNH GỬI KÈM (TỰ ĐỘNG DÒ TÌM)
+         2. DANH SÁCH ẢNH .JPEG TRONG THƯ MỤC style/ (TỰ ĐỘNG DÒ TÌM)
          ---------------------------------------------------------------------- */
       const CANDIDATE_LOCAL_PHOTOS = [
-        'image.png',
-        'image.jpg',
-        'style/image.png',
-        'style/image.jpg',
+        'style/anh1.jpeg',
+        'style/anh2.jpeg',
+        'style/anh3.jpeg',
+        'style/anh4.jpeg',
+        'style/anh5.jpeg',
+        'style/anh6.jpeg',
+        'style/1.jpeg',
+        'style/2.jpeg',
+        'style/3.jpeg',
+        'style/4.jpeg',
+        'style/5.jpeg',
+        'style/6.jpeg',
+        'style/anh.jpeg',
+        'style/image.jpeg',
+        'style/thu.jpeg',
+        'style/minhthu.jpeg',
+        'style/kyniem.jpeg',
+        'style/hinh1.jpeg',
+        'style/hinh2.jpeg',
+        'style/hinh3.jpeg',
         'style/anh1.jpg',
-        'style/anh1.png',
         'style/anh2.jpg',
-        'style/anh2.png',
         'style/anh3.jpg',
-        'style/anh3.png',
         'style/anh4.jpg',
-        'style/anh.jpg',
-        'style/anh.png',
-        'style/thu.jpg',
-        'style/minhthu.jpg',
-        'style/kyniem.jpg'
+        'style/1.jpg',
+        'style/2.jpg',
+        'style/3.jpg',
+        'style/image.jpg',
+        'style/image.png',
+        'image.jpeg',
+        'image.png'
       ];
 
       const discoveredPhotos = [];
-
-      // Khôi phục ảnh kỷ niệm đã chọn trước đó từ localStorage (nếu có)
-      try {
-        const savedPhotosJson = localStorage.getItem('minh_thu_20_10_photos');
-        if (savedPhotosJson) {
-          const parsed = JSON.parse(savedPhotosJson);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((dataUrl) => {
-              if (typeof dataUrl === 'string' && !discoveredPhotos.includes(dataUrl)) {
-                discoveredPhotos.push(dataUrl);
-              }
-            });
-          }
-        }
-      } catch (e) {}
 
       /* ----------------------------------------------------------------------
          3. DỮ LIỆU 6 CÂU LỜI CHÚC 20/10 CỦA MINH DÀNH CHO THƯ 🌷
@@ -1490,7 +1482,8 @@
         {
           // Câu 1 — Mở đầu
           text: "Thư ơiii, chúc bé iu của Minh 20/10 thật vui vẻ và hạnh phúc nhaaa 💗🌷",
-          preferredPhotos: ['image.png', 'style/anh1.jpg', 'style/anh1.png', 'style/anh.jpg'],
+          preferredPhotos: ['style/anh1.jpeg', 'style/1.jpeg', 'style/anh.jpeg', 'style/image.jpeg'],
+          photoSlotIndex: 0,
           gifUrl: "https://i.pinimg.com/originals/56/80/90/5680904ede54bea21d02450affebfc4f.gif",
           caption: "Chúc bé iu của Minh 20/10 ngập tràn niềm vui 💗🌷",
           gifFallback: "Chúc bé iu của Minh 20/10 thật vui vẻ và hạnh phúc 💗🌷",
@@ -1501,7 +1494,8 @@
         {
           // Câu 2 — Lời chúc dịu dàng
           text: "Mong là cô gái của Minh lúc nào cũng xinh đẹp, vui vẻ, luôn được yêu thương và gặp thật nhiều điều tốt đẹp.",
-          preferredPhotos: ['style/anh2.jpg', 'style/anh2.png'],
+          preferredPhotos: ['style/anh2.jpeg', 'style/2.jpeg', 'style/hinh2.jpeg'],
+          photoSlotIndex: 1,
           gifUrl: "https://i.pinimg.com/originals/b7/c6/4a/b7c64aca651271c52087f58276bd1de1.gif",
           caption: "Cô gái của Minh lúc nào cũng rạng rỡ và xinh đẹp nhaaa 🌷",
           gifFallback: "Mong cô gái của Minh luôn xinh đẹp và được yêu thương 🌷",
@@ -1510,12 +1504,13 @@
           aiBadge: "Luôn xinh đẹp nha 🌷"
         },
         {
-          // Câu 3 — Cảm ơn vì đã xuất hiện (Ưu tiên hiển thị ảnh photobooth kỷ niệm của 2 đứa)
+          // Câu 3 — Cảm ơn vì đã xuất hiện
           text: "Cảm ơn Thư vì đã xuất hiện trong cuộc sống của Minh, để những ngày bình thường của Minh cũng trở nên đặc biệt hơn một chút.",
-          preferredPhotos: ['image.png', 'style/image.png', 'style/anh1.jpg', 'style/anh3.jpg', 'style/minhthu.jpg'],
-          useFirstDiscoveredPhoto: true,
+          preferredPhotos: ['style/anh3.jpeg', 'style/3.jpeg', 'style/minhthu.jpeg', 'style/anh1.jpeg'],
+          photoSlotIndex: 2,
+          useAnyDiscoveredPhoto: true,
           gifUrl: "https://i.pinimg.com/originals/3f/4e/d3/3f4ed3cb1539cb42dc93b78020a3ef55.gif",
-          caption: "Cảm ơn Thư vì đã đến bên Minh 📸💗",
+          caption: "Cảm ơn Thư vì đã đến bên Minh 💗",
           gifFallback: "Có Thư bên cạnh, ngày nào của Minh cũng thật đặc biệt 💗",
           treeStage: 3.1,
           aiVisitLetter: true,
@@ -1524,7 +1519,8 @@
         {
           // Câu 4 — Lời tâm sự chân thành
           text: "Minh không giỏi nói những lời hoa mỹ, nhưng Minh thật lòng mong mình có thể ở bên Thư thật lâu, cùng Thư trải qua những niềm vui nhỏ nhặt và cả những lúc không vui nữa.",
-          preferredPhotos: ['style/anh3.jpg', 'style/anh3.png', 'style/anh2.jpg'],
+          preferredPhotos: ['style/anh4.jpeg', 'style/4.jpeg'],
+          photoSlotIndex: 3,
           gifUrl: null,
           caption: "Cùng nhau đi qua thật nhiều chặng đường nha Thư 🤍",
           gifFallback: "",
@@ -1535,7 +1531,8 @@
         {
           // Câu 5 — Sự chở che & an tâm
           text: "Sau này dù có chuyện gì, Minh vẫn mong mình sẽ luôn là người khiến Thư cảm thấy được yêu thương và an tâm.",
-          preferredPhotos: ['style/anh4.jpg', 'style/anh2.jpg'],
+          preferredPhotos: ['style/anh5.jpeg', 'style/5.jpeg'],
+          photoSlotIndex: 4,
           gifUrl: null,
           caption: "Luôn là nơi để Thư cảm thấy bình yên và được yêu thương 💗",
           gifFallback: "",
@@ -1544,12 +1541,13 @@
           aiBadge: "Luôn thương Thư 💗"
         },
         {
-          // Câu 6 — Câu kết cao trào + hiện ảnh kỷ niệm của hai đứa
+          // Câu 6 — Câu kết cao trào
           text: "Thương Thư nhiều lắm áaa, 20/10 vui vẻ nha, cô gái của Minh 🥹❤️💐",
-          preferredPhotos: ['image.png', 'style/image.png', 'style/anh1.jpg', 'style/anh.jpg', 'style/minhthu.jpg'],
-          useFirstDiscoveredPhoto: true,
+          preferredPhotos: ['style/anh6.jpeg', 'style/6.jpeg', 'style/kyniem.jpeg', 'style/anh1.jpeg', 'style/1.jpeg'],
+          photoSlotIndex: 0,
+          useAnyDiscoveredPhoto: true,
           gifUrl: "https://i.pinimg.com/originals/4e/89/d3/4e89d3e4ec4b1f59b1664e880a875c65.gif",
-          caption: "Minh & Thư — Thương cô gái của Minh nhiều lắm áaa 📸❤️💐",
+          caption: "Minh & Thư — Thương cô gái của Minh nhiều lắm áaa ❤️💐",
           gifFallback: "Thương Thư nhiều lắm áaa, 20/10 vui vẻ nha cô gái của Minh ❤️💐",
           treeStage: 6.0,
           isClimax: true,
@@ -1562,10 +1560,7 @@
          4. THAM CHIẾU PHẦN TỬ DOM
          ---------------------------------------------------------------------- */
       const bgMusic = document.getElementById('bgMusic');
-      const customPhotoInput = document.getElementById('customPhotoInput');
-      const pickPhotoBtn = document.getElementById('pickPhotoBtn');
       const musicToggleBtn = document.getElementById('musicToggleBtn');
-      const musicToggleIcon = document.getElementById('musicToggleIcon');
       const musicToggleText = document.getElementById('musicToggleText');
 
       const fallingLayer = document.getElementById('fallingLayer');
@@ -1585,7 +1580,6 @@
       const storyStageWrapper = document.getElementById('storyStageWrapper');
       const loveLetterCard = document.getElementById('loveLetterCard');
       const pauseResumeBtn = document.getElementById('pauseResumeBtn');
-      const pauseResumeIcon = document.getElementById('pauseResumeIcon');
       const pauseResumeText = document.getElementById('pauseResumeText');
       const skipSentenceBtn = document.getElementById('skipSentenceBtn');
 
@@ -1617,7 +1611,7 @@
       const miniHeartBtn = document.getElementById('miniHeartBtn');
 
       /* ----------------------------------------------------------------------
-         5. DÒ TÌM ẢNH TRONG style/ VÀ HỖ TRỢ CHỌN ẢNH TRỰC TIẾP
+         5. DÒ TÌM TỰ ĐỘNG CÁC ẢNH .JPEG TRONG THƯ MỤC style/
          ---------------------------------------------------------------------- */
       function probeImageExists(url) {
         return new Promise((resolve) => {
@@ -1628,7 +1622,7 @@
         });
       }
 
-      async function discoverLocalPhotos() {
+      const discoveryPromise = (async function discoverLocalPhotos() {
         const results = await Promise.all(CANDIDATE_LOCAL_PHOTOS.map(probeImageExists));
         results.forEach((validUrl) => {
           if (validUrl && !discoveredPhotos.includes(validUrl)) {
@@ -1636,14 +1630,14 @@
           }
         });
         renderMemoryGallery();
-      }
+      })();
 
       function renderMemoryGallery() {
         if (!memoryGalleryGrid || discoveredPhotos.length === 0) return;
         memoryGalleryGrid.innerHTML = '';
 
         const captions = [
-          'Minh & Thư 📸💗',
+          'Minh & Thư 💗',
           'Kỷ niệm tụi mình ✨',
           'Bé iu của Minh 🌷',
           'Thương Thư nhiều ❤️'
@@ -1672,70 +1666,31 @@
         }
       }
 
-      // Cho phép người dùng bấm "📸 Ảnh kỷ niệm" để chọn ảnh photobooth vừa gửi nếu chưa chép vào thư mục
-      if (pickPhotoBtn && customPhotoInput) {
-        pickPhotoBtn.addEventListener('click', () => {
-          customPhotoInput.click();
-        });
-
-        customPhotoInput.addEventListener('change', (event) => {
-          const files = Array.from(event.target.files || []);
-          if (!files.length) return;
-
-          files.forEach((file) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const dataUrl = e.target.result;
-              if (typeof dataUrl === 'string') {
-                discoveredPhotos.unshift(dataUrl);
-                try {
-                  localStorage.setItem(
-                    'minh_thu_20_10_photos',
-                    JSON.stringify(discoveredPhotos.slice(0, 4))
-                  );
-                } catch (err) {}
-
-                // Hiển thị ngay ảnh vừa chọn lên khung Polaroid hiện tại
-                activeStoryGif.src = dataUrl;
-                polaroidCaption.textContent = 'Khoảnh khắc đáng yêu của Minh & Thư 📸💗';
-                gifStageBox.classList.add('is-mounted', 'is-visible', 'is-photo-frame');
-                gifStageBox.classList.remove('has-error');
-                renderMemoryGallery();
-                memoryGalleryWrap.classList.add('is-mounted');
-              }
-            };
-            reader.readAsDataURL(file);
-          });
-        });
-      }
-
-      // Khởi chạy dò tìm ảnh trong style/ ngay khi mở trang
-      discoverLocalPhotos();
-
       async function resolveMediaForSentence(step) {
-        // 1. Nếu người dùng đã chọn ảnh kỷ niệm hoặc có ảnh đầu tiên cho câu quan trọng
-        if (step.useFirstDiscoveredPhoto && discoveredPhotos.length > 0) {
-          return { url: discoveredPhotos[0], isPhoto: true };
-        }
+        await discoveryPromise;
 
-        // 2. Kiểm tra danh sách đường dẫn ưu tiên trong style/ của từng câu
+        // 1. Kiểm tra danh sách đường dẫn ưu tiên của từng câu
         if (Array.isArray(step.preferredPhotos)) {
           for (let i = 0; i < step.preferredPhotos.length; i++) {
             const candidate = step.preferredPhotos[i];
             if (discoveredPhotos.includes(candidate)) {
               return { url: candidate, isPhoto: true };
             }
-            const checked = await probeImageExists(candidate);
-            if (checked) {
-              if (!discoveredPhotos.includes(checked)) {
-                discoveredPhotos.push(checked);
-              }
-              return { url: checked, isPhoto: true };
-            }
           }
         }
 
-        // 3. Nếu không có ảnh riêng ở câu này thì dùng GIF dễ thương
+        // 2. Nếu có ảnh trong style/ theo thứ tự vị trí câu
+        if (typeof step.photoSlotIndex === 'number' && discoveredPhotos[step.photoSlotIndex]) {
+          return { url: discoveredPhotos[step.photoSlotIndex], isPhoto: true };
+        }
+
+        // 3. Nếu câu đánh dấu ưu tiên hiển thị ảnh kỷ niệm bất kỳ tìm được trong style/
+        if (step.useAnyDiscoveredPhoto && discoveredPhotos.length > 0) {
+          const fallbackPhoto = discoveredPhotos[step.photoSlotIndex % discoveredPhotos.length] || discoveredPhotos[0];
+          return { url: fallbackPhoto, isPhoto: true };
+        }
+
+        // 4. Nếu không có ảnh riêng ở câu này thì dùng GIF dễ thương
         if (step.gifUrl) {
           return { url: step.gifUrl, isPhoto: false };
         }
@@ -1744,7 +1699,7 @@
       }
 
       /* ----------------------------------------------------------------------
-         6. ĐIỀU KHIỂN NHẠC NỀN (style/nhac.mp3)
+         6. ĐIỀU KHIỂN NHẠC NỀN (style/nhac.mp3) — KHÔNG DÙNG ICON
          ---------------------------------------------------------------------- */
       let isMusicMutedByUser = false;
       let musicFadeInterval = null;
@@ -1779,14 +1734,8 @@
       }
 
       function updateMusicButtonUI(isPlaying) {
-        if (!musicToggleIcon || !musicToggleText) return;
-        if (isPlaying) {
-          musicToggleIcon.textContent = '🎵';
-          musicToggleText.textContent = 'Nhạc';
-        } else {
-          musicToggleIcon.textContent = '🔇';
-          musicToggleText.textContent = 'Bật nhạc';
-        }
+        if (!musicToggleText) return;
+        musicToggleText.textContent = isPlaying ? 'Nhạc' : 'Bật nhạc';
       }
 
       if (musicToggleBtn && bgMusic) {
@@ -1867,14 +1816,12 @@
         document.body.classList.toggle('is-paused', isPaused);
 
         if (isPaused) {
-          pauseResumeIcon.textContent = '▶';
           pauseResumeText.textContent = 'Tiếp tục';
           aiCharacter.classList.remove('is-thinking-nod');
           activeWebAnimations.forEach((anim) => {
             try { anim.pause(); } catch (e) {}
           });
         } else {
-          pauseResumeIcon.textContent = '⏸';
           pauseResumeText.textContent = 'Tạm dừng';
           activeWebAnimations.forEach((anim) => {
             try { anim.play(); } catch (e) {}
@@ -2849,7 +2796,7 @@
       }
 
       /* ----------------------------------------------------------------------
-         13. TRÌNH TỰ KỂ CHUYỆN TỔNG THỂ (KÈM PHÁT NHẠC & HIỂN THỊ ẢNH KỶ NIỆM)
+         13. TRÌNH TỰ KỂ CHUYỆN TỔNG THỂ (KÈM PHÁT NHẠC & HIỂN THỊ ẢNH TRONG STYLE/)
          ---------------------------------------------------------------------- */
       async function startConfessionJourney() {
         if (hasStarted) return;
@@ -2932,7 +2879,7 @@
 
           await typeLoveSentence(step.text);
 
-          // Dò tìm ảnh trong style/ hoặc ảnh vừa tải lên, nếu chưa có thì hiển thị GIF
+          // Tự động lấy ảnh .jpeg trong style/, nếu câu không có ảnh riêng thì hiển thị GIF
           const resolvedMedia = await resolveMediaForSentence(step);
           if (resolvedMedia && resolvedMedia.url) {
             gifFallbackText.textContent = step.gifFallback || 'Khoảnh khắc dễ thương của Minh & Thư 💗';
@@ -3013,7 +2960,7 @@
         const isOpen = fullLetterReview.classList.toggle('is-open');
         toggleReviewBtn.innerHTML = isOpen
           ? '<span>Thu gọn lời chúc</span>'
-          : '<span>💌 Xem lại toàn bộ lời chúc của Minh từ đầu</span>';
+          : '<span>Xem lại toàn bộ lời chúc của Minh từ đầu</span>';
       });
 
       heartTriggerBtn.addEventListener('click', startConfessionJourney);
